@@ -1,0 +1,29 @@
+---
+import { SITE_TITLE } from '../consts';
+
+const year = new Date().getFullYear();
+
+// Add your social links; use empty array if none
+const social = [
+  { href: 'https://x.com/creativenux', label: 'X.com' },
+  { href: 'https://github.com/creativenux', label: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/creativenux', label: 'LinkedIn' },
+];
+---
+
+<footer class="mt-16 md:mt-24 pt-8 border-t border-[var(--color-border)] text-sm text-[var(--color-text-muted)]">
+  <div class="flex flex-wrap items-center justify-between gap-4">
+    <span>© {year} {SITE_TITLE}</span>
+    {social.length > 0 && (
+      <ul class="flex gap-6">
+        {social.map(({ href, label }) => (
+          <li>
+            <a href={href} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-text)]">
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</footer>

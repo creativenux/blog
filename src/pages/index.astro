@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getSortedPosts } from '../lib/posts';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const posts = await getSortedPosts();
+const recent = posts.slice(0, 5);
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <section class="mb-12 md:mb-16">
+    <h1 class="text-2xl font-semibold tracking-tight text-[var(--color-text)] mb-3">
+      Hi, I'm Toheeb
+    </h1>
+    <p class="leading-relaxed text-[var(--color-text)] max-w-[42rem]">
+      I build things for the web and write about design, development, and what I'm learning. This is my personal corner on the internet.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-lg font-semibold text-[var(--color-text)] mb-4">Recent posts</h2>
+    <div class="divide-y-0">
+      {recent.length > 0 ? (
+        recent.map((post) => (
+          <PostCard
+            slug={post.slug}
+            title={post.data.title}
+            date={post.data.date}
+          />
+        ))
+      ) : (
+        <p class="text-[var(--color-text-muted)] py-6">No posts yet. Check back soon.</p>
+      )}
+    </div>
+    {posts.length > 5 && (
+      <p class="mt-6">
+        <a href="/posts" class="text-sm font-medium hover:underline">
+          View all posts →
+        </a>
+      </p>
+    )}
+  </section>
+</BaseLayout>

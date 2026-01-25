@@ -1,42 +1,101 @@
-# Portfolio Blog Starter
+# Toheeb Olayemi — Personal Website
 
-This is a porfolio site template complete with a blog. Includes:
+A personal website `creativenux.com` built with [Astro](https://astro.build), TypeScript, and Tailwind CSS. 100% created with Cursor (posts and content are written by me).
 
-- MDX and Markdown support
-- Optimized for SEO (sitemap, robots, JSON-LD schema)
-- RSS Feed
-- Dynamic OG images
-- Syntax highlighting
-- Tailwind v4
-- Vercel Speed Insights / Web Analytics
-- Geist font
+## Features
 
-## Demo
+- **Homepage** — Short intro and recent posts
+- **Posts index** — Chronological list of all posts
+- **Individual posts** — Markdown and MDX with syntax highlighting (Shiki), reading time, and clean typography
+- **About page** — Bio and contact
+- **Topics** — Browse posts by topic (`/topics`, `/topics/[topic]`)
+- **RSS** — `/rss.xml`
+- **Sitemap** — `/sitemap-index.xml`
+- **Dark/light mode** — Follows `prefers-color-scheme`, no toggle
 
-https://portfolio-blog-starter.vercel.app
+## Tech Stack
 
-## How to Use
+- Astro (latest)
+- TypeScript
+- Tailwind CSS v4
+- MDX for rich posts
+- Content Collections
+- No external UI libraries
 
-You can choose from one of the following two methods to use this repository:
+## Project Structure
 
-### One-Click Deploy
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/blog&project-name=blog&repository-name=blog)
-
-### Clone and Deploy
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
-
-```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/solutions/blog blog
+```
+/
+├── public/
+├── src/
+│   ├── content/
+│   │   ├── config.ts       # Content collection schema
+│   │   └── posts/          # .md and .mdx posts
+│   ├── layouts/
+│   │   └── BaseLayout.astro
+│   ├── components/
+│   │   ├── BaseHead.astro  # Meta, SEO, OG
+│   │   ├── Header.astro
+│   │   ├── Footer.astro
+│   │   └── PostCard.astro
+│   ├── lib/
+│   │   └── posts.ts        # getSortedPosts, getAllTopics, getPostsByTopicSlug, etc.
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── about.astro
+│   │   ├── posts/
+│   │   │   ├── index.astro
+│   │   │   └── [slug].astro
+│   │   ├── topics/
+│   │   │   ├── index.astro
+│   │   │   └── [topic].astro
+│   │   ├── rss.xml.ts
+│   │   └── robots.txt.ts
+│   ├── styles/
+│   │   └── global.css
+│   └── consts.ts
+├── astro.config.mjs
+├── package.json
+└── tsconfig.json
 ```
 
-Then, run Next.js in development mode:
+## Setup
 
 ```bash
-pnpm dev
+bun install
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/templates) ([Documentation](https://nextjs.org/docs/app/building-your-application/deploying)).
+## Commands
+
+| Command       | Action                            |
+| :------------ | :-------------------------------- |
+| `bun dev`     | Dev server at `http://localhost:4321` |
+| `bun build`   | Production build to `./dist/`     |
+| `bun preview` | Preview the production build      |
+
+## Writing Posts
+
+Add `.md` or `.mdx` files to `src/content/posts/`. Frontmatter:
+
+```yaml
+---
+title: "Post Title"
+date: 2024-01-25
+description: "Optional short description"
+topics: ["optional", "topics"]
+---
+
+Content in **Markdown** or MDX.
+```
+
+Slug is taken from the filename. Posts are sorted by `date` (newest first).
+
+## Configuration
+
+- **Site URL** — Set `site` in `astro.config.mjs` and `SITE_URL` in `src/consts.ts` (keep them in sync for sitemap and RSS).
+- **Site title / description** — Edit `src/consts.ts`.
+- **Header/Footer** — Update `src/components/Header.astro` and `Footer.astro` (social links).
+
+## License
+
+MIT
