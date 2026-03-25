@@ -1,34 +1,68 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PostCard from '../components/PostCard.astro';
-import { getSortedPosts } from '../lib/posts';
+import { getSortedPosts, groupPostsByYear } from '../lib/posts';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import PostCard from '../components/PostCard.astro';
 
 const posts = await getSortedPosts();
 const recent = posts.slice(0, 5);
+
+const groupedRecent = groupPostsByYear(recent);
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <section class="mb-12 md:mb-16">
+  <article class="prose mb-12">
     <h1 class="text-2xl font-semibold tracking-tight text-[var(--color-text)] mb-3">
       Hi, I'm Toheeb
     </h1>
-    <p class="leading-relaxed text-[var(--color-text)] max-w-[42rem]">
-      I build things that last, and leave systems better than I found them. 
+
+    <p>
+      I build software systems that scale and AI tools that make things smarter. My background is in backend engineering and data-driven development and I like writing clean, efficient code to solve tricky problems.
+    </p>
+
+    <p>
+      My guiding principle is: Freedom and Stewardship.
+    </p>
+    <p>
+      Freedom covers time, choice, and curiosity.
+    </p>
+    <p>
+      Stewardship captures responsibility without ego, building things that last, and leaving systems better than I found them.
+    </p>
+    <p>
       Here's my personal corner on the internet. Enjoy 🎉
     </p>
-  </section>
+
+    <p class="text-[var(--color-text-muted)]">
+      You can reach me at{' '}
+      <a href="mailto:hello@creativenux.com">hello@creativenux.com</a>, or find me on{' '}
+      <a href="https://x.com/creativenux" target="_blank" rel="noopener noreferrer">
+        X.com
+      </a>
+      {' '}and{' '}
+      <a href="https://github.com/creativenux" target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>.
+    </p>
+  </article>
 
   <section>
-    <h2 class="text-lg font-semibold text-[var(--color-text)] mb-4">Recent posts</h2>
-    <div class="divide-y-0">
-      {recent.length > 0 ? (
-        recent.map((post) => (
-          <PostCard
-            slug={post.slug}
-            title={post.data.title}
-            date={post.data.date}
-          />
+    <h2 class="text-lg font-semibold text-[var(--color-text)] mb-4">Recent writings</h2>
+    <div>
+      {groupedRecent.length > 0 ? (
+        groupedRecent.map((group) => (
+          <div class="grid grid-cols-[4rem_1fr] gap-x-6 border-t border-[var(--color-border)] py-2.5 first:border-t-0">
+            <p class="text-sm text-[var(--color-text-muted)] pt-2">{group.year}</p>
+            <div class="divide-y-0">
+              {group.posts.map((post) => (
+                <PostCard
+                  slug={post.slug}
+                  title={post.data.title}
+                  date={post.data.date}
+                />
+              ))}
+            </div>
+          </div>
         ))
       ) : (
         <p class="text-[var(--color-text-muted)] py-6">No posts yet. Check back soon.</p>

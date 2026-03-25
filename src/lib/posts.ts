@@ -46,3 +46,17 @@ export async function getPostsByTopicSlug(slug: string) {
     .filter((p) => (p.data.topics ?? []).some((t) => slugifyTopic(t) === slug))
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
+
+/** Group posts by year, newest year first */
+export function groupPostsByYear<T extends { data: { date: Date } }>(posts: T[]) {
+  return posts.reduce((acc, post) => {
+    const year = post.data.date.getFullYear();
+    const existing = acc.find((group) => group.year === year);
+    if (existing) {
+      existing.posts.push(post);
+    } else {
+      acc.push({ year, posts: [post] });
+    }
+    return acc;
+  }, [] as Array<{ year: number; posts: T[] }>);
+}
