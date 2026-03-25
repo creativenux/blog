@@ -22,12 +22,12 @@ const posts = await getPostsByTopicSlug(Astro.params.topic!);
 >
   <article>
     <nav class="mb-6 text-sm" aria-label="Breadcrumb">
-      <a href="/topics" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:underline">
+      <a href="/topics" class="text-(--color-text-muted) hover:text-(--color-text) hover:underline">
         ← Topics
       </a>
     </nav>
 
-    <h1 class="text-2xl font-semibold tracking-tight text-[var(--color-text)] mb-6">
+    <h1 class="text-2xl font-semibold tracking-tight text-(--color-text) mb-6">
       {topicName}
     </h1>
 
@@ -42,7 +42,7 @@ const posts = await getPostsByTopicSlug(Astro.params.topic!);
         ))}
       </div>
     ) : (
-      <p class="text-[var(--color-text-muted)] text-sm">No posts with this topic.</p>
+      <p class="text-(--color-text-muted) text-sm">No posts with this topic.</p>
     )}
   </article>
 </BaseLayout>
