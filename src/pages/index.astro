@@ -12,7 +12,7 @@ const groupedRecent = groupPostsByYear(recent);
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <article class="prose mb-12">
-    <h1 class="text-2xl font-semibold tracking-tight text-[var(--color-text)] mb-3">
+    <h1 class="text-2xl font-semibold tracking-tight text-(--color-text) mb-3">
       Hi, I'm Toheeb
     </h1>
 
@@ -33,7 +33,7 @@ const groupedRecent = groupPostsByYear(recent);
       Here's my personal corner on the internet. Enjoy 🎉
     </p>
 
-    <p class="text-[var(--color-text-muted)]">
+    <p class="text-(--color-text-muted)">
       You can reach me at{' '}
       <a href="mailto:hello@creativenux.com">hello@creativenux.com</a>, or find me on{' '}
       <a href="https://x.com/creativenux" target="_blank" rel="noopener noreferrer">
@@ -47,12 +47,12 @@ const groupedRecent = groupPostsByYear(recent);
   </article>
 
   <section>
-    <h2 class="text-lg font-semibold text-[var(--color-text)] mb-4">Recent writings</h2>
+    <h2 class="text-lg font-semibold text-(--color-text) mb-4">Recent writings</h2>
     <div>
       {groupedRecent.length > 0 ? (
         groupedRecent.map((group) => (
-          <div class="grid grid-cols-[4rem_1fr] gap-x-6 border-t border-[var(--color-border)] py-2.5 first:border-t-0">
-            <p class="text-sm text-[var(--color-text-muted)] pt-2">{group.year}</p>
+          <div class="grid grid-cols-[4rem_1fr] gap-x-6 border-t border-(--color-border) py-2.5 first:border-t-0">
+            <p class="text-sm text-(--color-text-muted) pt-2">{group.year}</p>
             <div class="divide-y-0">
               {group.posts.map((post) => (
                 <PostCard
@@ -65,7 +65,7 @@ const groupedRecent = groupPostsByYear(recent);
           </div>
         ))
       ) : (
-        <p class="text-[var(--color-text-muted)] py-6">No posts yet. Check back soon.</p>
+        <p class="text-(--color-text-muted) py-6">No posts yet. Check back soon.</p>
       )}
     </div>
     {posts.length > 5 && (

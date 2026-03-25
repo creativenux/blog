@@ -10,17 +10,17 @@ const groupedPosts = groupPostsByYear(posts);
 
 <BaseLayout title="Posts" description={`All posts on ${SITE_TITLE}.`}>
   <article>
-    <h1 class="text-2xl font-semibold tracking-tight text-[var(--color-text)] mb-6">
+    <h1 class="text-2xl font-semibold tracking-tight text-(--color-text) mb-6">
       Posts
     </h1>
-    <p class="text-[var(--color-text-muted)] mb-8 max-w-[42rem] text-sm">
+    <p class="text-(--color-text-muted) mb-8 max-w-2xl text-sm">
       A chronological list of everything I've written.
     </p>
 
     {
       groupedPosts.map((group) => (
-        <div class="grid grid-cols-[4rem_1fr] gap-x-6 border-t border-[var(--color-border)] py-2.5 first:border-t-0">
-          <p class="text-sm text-[var(--color-text-muted)] pt-2">{group.year}</p>
+        <div class="grid grid-cols-[4rem_1fr] gap-x-6 border-t border-(--color-border) py-2.5 first:border-t-0">
+          <p class="text-sm text-(--color-text-muted) pt-2">{group.year}</p>
           <div class="divide-y-0">
             {group.posts.map((post) => (
               <PostCard

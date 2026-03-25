@@ -13,14 +13,14 @@ const formatted = date.toLocaleDateString('en-US', {
 });
 ---
 
-<article class="py-2.5 border-b border-[var(--color-border)] last:border-b-0">
+<article class="py-2.5 border-b border-(--color-border) last:border-b-0">
   <a href={`/posts/${slug}`} class="flex items-baseline justify-between gap-4 group no-underline">
-    <span class="text-sm font-medium text-[var(--color-text)] truncate group-hover:underline">
+    <span class="text-sm font-medium text-(--color-text) truncate group-hover:underline">
       {title}
     </span>
     <time
       datetime={date.toISOString()}
-      class="text-xs text-[var(--color-text-muted)] shrink-0"
+      class="text-xs text-(--color-text-muted) shrink-0"
     >
       {formatted}
     </time>
