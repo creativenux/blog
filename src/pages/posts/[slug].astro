@@ -1,15 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { getReadingTimeMinutes, slugifyTopic } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
-  return posts.map((p) => ({ params: { slug: p.slug }, props: { post: p } }));
+  return posts.map((p) => ({ params: { slug: p.id }, props: { post: p } }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 const readingMins = getReadingTimeMinutes(post.body);
 const pubDate = post.data.date.toISOString();
 const formatted = post.data.date.toLocaleDateString('en-US', {

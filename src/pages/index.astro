@@ -56,7 +56,7 @@ const groupedRecent = groupPostsByYear(recent);
             <div class="divide-y-0">
               {group.posts.map((post) => (
                 <PostCard
-                  slug={post.slug}
+                  slug={post.id}
                   title={post.data.title}
                   date={post.data.date}
                 />
