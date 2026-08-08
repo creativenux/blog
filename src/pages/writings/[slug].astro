@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
-import { getReadingTimeMinutes, slugifyTopic } from '../../lib/posts';
+import { getReadingTimeMinutes, slugifyTopic } from '../../lib/writings';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  const posts = await getCollection('writings');
   return posts.map((p) => ({ params: { slug: p.id }, props: { post: p } }));
 }
 
@@ -29,8 +29,8 @@ const topics = post.data.topics ?? [];
   <article class="prose">
     {/* Breadcrumbs / Back link */}
     <nav class="mb-6 text-sm" aria-label="Breadcrumb">
-      <a href="/posts" class="text-(--color-text-muted) hover:text-(--color-text) hover:underline">
-        ← Back to posts
+      <a href="/writings" class="text-(--color-text-muted) hover:text-(--color-text) hover:underline">
+        ← Back to writings
       </a>
     </nav>
 

@@ -1,14 +1,14 @@
 # Toheeb Olayemi — Personal Website
 
-A personal website `creativenux.com` built with [Astro](https://astro.build), TypeScript, and Tailwind CSS. 100% created with Cursor (posts and content are written by me).
+A personal website `creativenux.com` built with [Astro](https://astro.build), TypeScript, and Tailwind CSS. 100% created with Cursor (writings and content are written by me).
 
 ## Features
 
-- **Homepage** — Short intro and recent posts
-- **Posts index** — Chronological list of all posts
-- **Individual posts** — Markdown and MDX with syntax highlighting (Shiki), reading time, and clean typography
+- **Homepage** — Short intro and recent writings
+- **Writings index** — Chronological list of all writings
+- **Individual writings** — Markdown and MDX with syntax highlighting (Shiki), reading time, and clean typography
 - **About page** — Bio and contact
-- **Topics** — Browse posts by topic (`/topics`, `/topics/[topic]`)
+- **Topics** — Browse writings by topic (`/topics`, `/topics/[topic]`)
 - **RSS** — `/rss.xml`
 - **Sitemap** — `/sitemap-index.xml`
 - **Dark/light mode** — Follows `prefers-color-scheme`, no toggle
@@ -18,7 +18,7 @@ A personal website `creativenux.com` built with [Astro](https://astro.build), Ty
 - Astro (latest)
 - TypeScript
 - Tailwind CSS v4
-- MDX for rich posts
+- MDX for rich writings
 - Content Collections
 - No external UI libraries
 
@@ -30,7 +30,7 @@ A personal website `creativenux.com` built with [Astro](https://astro.build), Ty
 ├── src/
 │   ├── content/
 │   │   ├── config.ts       # Content collection schema
-│   │   └── posts/          # .md and .mdx posts
+│   │   └── writings/       # .md and .mdx writings
 │   ├── layouts/
 │   │   └── BaseLayout.astro
 │   ├── components/
@@ -39,11 +39,11 @@ A personal website `creativenux.com` built with [Astro](https://astro.build), Ty
 │   │   ├── Footer.astro
 │   │   └── PostCard.astro
 │   ├── lib/
-│   │   └── posts.ts        # getSortedPosts, getAllTopics, getPostsByTopicSlug, etc.
+│   │   └── writings.ts     # getSortedPosts, getAllTopics, getPostsByTopicSlug, etc.
 │   ├── pages/
 │   │   ├── index.astro
 │   │   ├── about.astro
-│   │   ├── posts/
+│   │   ├── writings/
 │   │   │   ├── index.astro
 │   │   │   └── [slug].astro
 │   │   ├── topics/
@@ -73,13 +73,13 @@ bun install
 | `bun build`   | Production build to `./dist/`     |
 | `bun preview` | Preview the production build      |
 
-## Writing Posts
+## Writing
 
-Add `.md` or `.mdx` files to `src/content/posts/`. Frontmatter:
+Add `.md` or `.mdx` files to `src/content/writings/`. Frontmatter:
 
 ```yaml
 ---
-title: "Post Title"
+title: "Writing Title"
 date: 2024-01-25
 description: "Optional short description"
 topics: ["optional", "topics"]
@@ -88,7 +88,7 @@ topics: ["optional", "topics"]
 Content in **Markdown** or MDX.
 ```
 
-Slug is taken from the filename. Posts are sorted by `date` (newest first).
+Slug is taken from the filename. Writings are sorted by `date` (newest first).
 
 ## Configuration
 

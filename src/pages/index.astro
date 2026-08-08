@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getSortedPosts, groupPostsByYear } from '../lib/posts';
+import { getSortedPosts, groupPostsByYear } from '../lib/writings';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import PostCard from '../components/PostCard.astro';
 
@@ -65,13 +65,13 @@ const groupedRecent = groupPostsByYear(recent);
           </div>
         ))
       ) : (
-        <p class="text-(--color-text-muted) py-6">No posts yet. Check back soon.</p>
+        <p class="text-(--color-text-muted) py-6">No writings yet. Check back soon.</p>
       )}
     </div>
     {posts.length > 5 && (
       <p class="mt-6">
-        <a href="/posts" class="text-sm font-medium hover:underline">
-          View all posts →
+        <a href="/writings" class="text-sm font-medium hover:underline">
+          View all writings →
         </a>
       </p>
     )}

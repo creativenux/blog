@@ -1,5 +1,5 @@
 import rss from '@astrojs/rss';
-import { getSortedPosts } from '../lib/posts';
+import { getSortedPosts } from '../lib/writings';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../consts';
 
 export async function GET(context: { site: string | undefined }) {
@@ -13,7 +13,7 @@ export async function GET(context: { site: string | undefined }) {
       title: post.data.title,
       description: post.data.description ?? post.data.title,
       pubDate: post.data.date,
-      link: `/posts/${post.id}/`,
+      link: `/writings/${post.id}/`,
     })),
   });
 }

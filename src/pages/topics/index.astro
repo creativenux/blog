@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getAllTopics } from '../../lib/posts';
+import { getAllTopics } from '../../lib/writings';
 import { SITE_TITLE } from '../../consts';
 
 const topics = await getAllTopics();
@@ -12,7 +12,7 @@ const topics = await getAllTopics();
       Topics
     </h1>
     <p class="text-(--color-text-muted) mb-8 max-w-2xl text-sm">
-      Browse posts by topic.
+      Browse writings by topic.
     </p>
 
     {topics.length > 0 ? (

@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 
 /** Fetch all posts sorted by date (newest first) */
 export async function getSortedPosts() {
-  const posts = await getCollection('posts');
+  const posts = await getCollection('writings');
   return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 
@@ -23,7 +23,7 @@ export function slugifyTopic(topic: string): string {
 
 /** All topics with display names and counts, sorted by name */
 export async function getAllTopics(): Promise<{ name: string; slug: string; count: number }[]> {
-  const posts = await getCollection('posts');
+  const posts = await getCollection('writings');
   const countMap = new Map<string, number>();
   const nameMap = new Map<string, string>();
   for (const p of posts) {
@@ -41,7 +41,7 @@ export async function getAllTopics(): Promise<{ name: string; slug: string; coun
 
 /** Posts that have a topic whose slug matches, newest first */
 export async function getPostsByTopicSlug(slug: string) {
-  const posts = await getCollection('posts');
+  const posts = await getCollection('writings');
   return posts
     .filter((p) => (p.data.topics ?? []).some((t) => slugifyTopic(t) === slug))
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());

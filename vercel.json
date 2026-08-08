@@ -1,0 +1,11 @@
+{
+  "redirects": [
+    { "source": "/posts", "destination": "/writings", "permanent": true },
+    { "source": "/posts/01-start-here", "destination": "/writings/01-start-here", "permanent": true },
+    { "source": "/posts/02-a-blank-white-paper", "destination": "/writings/02-a-blank-white-paper", "permanent": true },
+    { "source": "/posts/03-a-walk-with-spirit", "destination": "/writings/03-a-walk-with-spirit", "permanent": true },
+    { "source": "/posts/04-the-first-shot", "destination": "/writings/04-the-first-shot", "permanent": true },
+    { "source": "/posts/05-the-trees-behind-the-library", "destination": "/writings/05-the-trees-behind-the-library", "permanent": true },
+    { "source": "/posts/06-the-enjoyment-of-leisure", "destination": "/writings/06-the-enjoyment-of-leisure", "permanent": true }
+  ]
+}
